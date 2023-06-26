@@ -8,9 +8,10 @@ function App() {
   const [result, setResult] = useState("");
  
   const handleChange = (event) => {
+    console.log('first: ', event.target.files[0])
     const tempImagePath = URL.createObjectURL(event.target.files[0]);
+    console.log('second: ', tempImagePath)
     setImagePath(tempImagePath);
-
     Tesseract.recognize(
       tempImagePath, 
       'eng+kor', 
