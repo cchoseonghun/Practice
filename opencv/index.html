@@ -39,6 +39,8 @@
       let maxPoint = result.maxLoc;
       let rect = new cv.Rect(maxPoint.x, maxPoint.y, templ.cols, src.rows - maxPoint.y);
       dst = src.roi(rect);
+      cv.cvtColor(dst, dst, cv.COLOR_RGBA2GRAY);
+      cv.threshold(dst, dst, 177, 200, cv.THRESH_OTSU);
       cv.imshow('canvasOutput', dst);
       src.delete(); dst.delete(); mask.delete();
     };
